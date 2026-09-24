@@ -1,1 +1,46 @@
+{% extends "base.html" %}
+{% block title %}scan — osint-srv{% endblock %}
 
+{% block content %}
+<div class="tabs" id="tabs">
+  <button class="tab active" data-module="username">username</button>
+  <button class="tab" data-module="phone">phone</button>
+  <button class="tab" data-module="email">email</button>
+  <button class="tab" data-module="domain">domain</button>
+</div>
+
+<form id="scan-form" class="card">
+  <label>
+    target
+    <input type="text" id="target" name="target" autocomplete="off"
+           placeholder="johndoe / +919876543210 / a@b.com / example.com" required>
+  </label>
+
+  <details>
+    <summary>advanced</summary>
+    <div class="grid">
+      <label>proxy <input type="text" id="opt-proxy"
+        value="{{ settings.proxy or '' }}" placeholder="http://..."></label>
+      <label>timeout (s) <input type="number" id="opt-timeout"
+        value="{{ settings.timeout or 10 }}" min="1" step="1"></label>
+      <label>concurrent <input type="number" id="opt-concurrent"
+        value="{{ settings.concurrent or 50 }}" min="1" max="200"></label>
+      <label>region <input type="text" id="opt-region"
+        value="{{ settings.region or 'IN' }}" maxlength="2"></label>
+      <label class="check"><input type="checkbox" id="opt-aggressive">
+        aggressive (email)</label>
+      <label class="check"><input type="checkbox" id="opt-content">
+        content check (username)</label>
+    </div>
+  </details>
+
+  <button type="submit" id="run-btn">run scan</button>
+</form>
+
+<section id="status" class="card" hidden>
+  <div class="spinner"></div>
+  <span id="status-text">scanning…</span>
+</section>
+
+<section id="result" class="card" hidden></section>
+{% endblock %}
