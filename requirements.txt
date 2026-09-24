@@ -1,1 +1,12 @@
-
+flask
+aiohttp
+requests
+beautifulsoup4
+rich
+dnspython
+python-whois
+phonenumbers
+email-validator
+python-dotenv
+aiosqlite
+pyyaml
