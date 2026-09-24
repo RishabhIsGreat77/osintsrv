@@ -1,0 +1,35 @@
+cat > .gitignore <<'EOF'
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+ENV/
+
+# Environment / secrets
+.env
+.env.local
+*.env
+
+# Project data
+data/cache.db
+data/cache.db-*
+data/results/*
+!data/results/.gitkeep
+config/settings.json
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+EOF
