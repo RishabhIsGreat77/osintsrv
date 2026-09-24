@@ -10,7 +10,7 @@ echo "[*] installing system deps..."
 pkg install -y python git clang make libxml2 libxslt whois dnsutils
 
 echo "[*] upgrading pip..."
-pip install --upgrade pip
+pkg install python-pip -y
 
 echo "[*] installing python deps..."
 pip install -r requirements.txt
